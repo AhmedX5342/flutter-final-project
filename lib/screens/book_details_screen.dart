@@ -17,7 +17,12 @@ class BookDetails extends StatelessWidget {
       create: (context) => HomeCubit()..getBook(id),
       child: SafeArea(
         child: Scaffold(
-          appBar: AppBar(title: Text('Book Details')),
+          appBar: AppBar(title: const Text('Book Details',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ))),
           body: BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               var cubit = HomeCubit.get(context); // ---------------
@@ -46,12 +51,12 @@ class BookDetails extends StatelessWidget {
                           // ----------------------------- title
                           Text(
                             'Title: ${cubit.Book['title']!}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 24.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 8.0),
+                          const SizedBox(height: 8.0),
                   
                           // --------------------------- author (1)
                           (cubit.Book['author']! != null)
@@ -79,7 +84,7 @@ class BookDetails extends StatelessWidget {
                           (cubit.Book['description']! != null)
                               ? Text(
                             cubit.Book['description']!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 16.0,
                                   ),
                                 )
@@ -94,7 +99,7 @@ class BookDetails extends StatelessWidget {
                                     Uri url = Uri.parse(cubit.Book['previewLink']!);
                                     launchUrl(url);
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     'Preview here',
                                     style: TextStyle(
                                       fontSize: 16.0,
@@ -114,7 +119,7 @@ class BookDetails extends StatelessWidget {
                                     Uri url = Uri.parse(cubit.Book['buyLink']!);
                                     launchUrl(url);
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     'Buy here',
                                     style: TextStyle(
                                       fontSize: 16.0,

@@ -9,7 +9,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Books Library'),
+        title: Text('Books Library',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            )),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

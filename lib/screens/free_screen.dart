@@ -11,7 +11,12 @@ class FreeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Free Books')),
+      appBar: AppBar(title: const Text('Free Books',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ))),
       body: BlocProvider(
         create: (context)=>HomeCubit()..getFree(),
         child: SafeArea(
@@ -30,12 +35,21 @@ class FreeScreen extends StatelessWidget {
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>BookDetails(id: cubit.free_books[index].id!)));
                         },
                         child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.blueGrey[200],
+                              borderRadius: BorderRadius.all(Radius.circular(20))
+                          ),
                           child: Expanded(
                             child: Column(
                               children: [
                                 Image.network(cubit.free_books[index].image!,height: 250, fit: BoxFit.cover,),
                                 const SizedBox(height: 10),
-                                Text(cubit.free_books[index].name!),
+                                Text(cubit.free_books[index].name!,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87,
+                                    )),
                                 // (cubit.science_books[index].author!=null)?
                                 // Text('Author: ${cubit.science_books[index].author![0]}'):Text(''),
                                 // Text('Description: ${cubit.science_books[index].description!}'),
@@ -46,14 +60,14 @@ class FreeScreen extends StatelessWidget {
                       );
                     },
                     separatorBuilder: (context,index){
-                      return SizedBox(
+                      return const SizedBox(
                         height: 25,
                       );
                     },
                     itemCount: HomeCubit.get(context).free_books.length
                 );
               }else {
-                return Text('no data');
+                return const Text('no data');
               }
             },
           ),
